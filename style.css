@@ -1,0 +1,512 @@
+/* Previous styles remain the same, add these new rules */
+
+/* Floating Animations */
+:root {
+    --deep-blue: #0a192f;
+    --navy: #172a45;
+    --light-navy: #303C55;
+    --lightest-navy: #465881;
+    --slate: #8892b0;
+    --light-slate: #a8b2d1;
+    --lightest-slate: #ccd6f6;
+    --pink: #ff63c3;
+    --hot-pink: #ff2d95;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--deep-blue), var(--navy));
+    color: var(--lightest-slate);
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container {
+    max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 10;
+  height: auto; /* Tambahkan ini */
+  min-height: 100vh;
+  display: flex;
+  overflow: visible;
+  flex-direction: column;
+   padding-bottom: 150px;
+  justify-content: center
+}
+
+.ig-link {
+    position: relative;
+    z-index: 999;
+}
+
+.ig-link a {
+    position: relative;
+    z-index: 1000;
+}
+
+.preview {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+.title {
+    text-align: center;
+    margin: 2rem 0 3rem;
+    font-size: 3rem;
+    font-family: 'Pacifico', cursive;
+    color: white;
+}
+
+.title span {
+    color: var(--pink);
+    text-shadow: 0 0 10px rgba(255, 99, 195, 0.7);
+}
+
+.photo-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.photo-box {
+    flex: 1;
+    min-width: 0;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.photo-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Gaya untuk container foto */
+.photo-box {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Gaya untuk link Instagram */
+
+.ig-link {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* harus tinggi agar selalu di atas */
+    pointer-events: auto; /* pastikan aktif */
+}
+
+
+.ig-link a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #E1306C;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    background: rgba(225, 48, 108, 0.1);
+}
+
+.ig-link a {
+    border: 2px solid #E1306C;
+    background: transparent;
+}
+.ig-link a:hover {
+    background: rgba(225, 48, 108, 0.2);
+    transform: translateY(-2px);
+}
+
+.ig-link i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+/* Animasi hover untuk foto */
+.preview {
+    transition: transform 0.3s ease;
+}
+
+.photo-box:hover .preview {
+    transform: scale(1.03);
+}
+.love-btn {
+    display: block;
+    margin: 0 auto 3rem;
+    padding: 1rem 2.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Responsif: kecil di HP, sedang di desktop */
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--pink), var(--hot-pink));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 45, 149, 0.4);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+    width: fit-content;
+    max-width: 90%; /* Mencegah terlalu lebar di HP */
+}
+
+.love-bomb-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 20;
+}
+
+
+.love-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 45, 149, 0.6);
+}
+
+.love-btn:active {
+    transform: scale(0.98);
+}
+
+.message {
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--light-slate);
+    margin-top: 2rem;
+    opacity: 0.8;
+}
+
+.explosion-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* ini cukup */
+    pointer-events: none; /* WAJIB! agar tidak menutupi klik */
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: var(--pink);
+    animation: float 8s ease-out forwards;
+    pointer-events: none;
+    user-select: none;
+    text-shadow: 0 0 15px rgba(255, 99, 195, 0.9);
+    z-index: 100;
+    opacity: 0;
+    animation-delay: var(--delay);
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(0.3) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--random-x), var(--random-y)) scale(1.8) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.explosion-active .preview {
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        filter: brightness(100%);
+    }
+    100% {
+        filter: brightness(120%) drop-shadow(0 0 10px var(--pink));
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-container {
+        flex-direction: column;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .photo-box {
+        height: 300px;
+    }
+    
+    .love-btn {
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+    }
+}
+.floating-heart,
+.floating-star,
+.floating-kiss,
+.floating-ring {
+    position: fixed;
+    font-size: 2rem;
+    z-index: 5;
+    pointer-events: none;
+    user-select: none;
+    animation: floating 15s infinite linear;
+    opacity: 0.7;
+}
+
+.floating-heart {
+    color: #ff63c3;
+    text-shadow: 0 0 10px rgba(255, 99, 195, 0.7);
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+.card {
+    position: absolute;
+    z-index: 15;
+}
+
+.floating-star {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    top: 70%;
+    left: 80%;
+    animation-delay: 3s;
+    font-size: 1.8rem;
+}
+
+.floating-kiss {
+    color: #ff8c66;
+    text-shadow: 0 0 10px rgba(255, 140, 102, 0.7);
+    top: 30%;
+    left: 85%;
+    animation-delay: 6s;
+    font-size: 2.2rem;
+}
+
+.floating-ring {
+    color: #b0e0e6;
+    text-shadow: 0 0 10px rgba(176, 224, 230, 0.7);
+    top: 80%;
+    left: 15%;
+    animation-delay: 9s;
+    font-size: 1.5rem;
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(50px, 50px) rotate(90deg);
+    }
+    50% {
+        transform: translate(100px, 0) rotate(180deg);
+    }
+    75% {
+        transform: translate(50px, -50px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* Additional animations for photos */
+.photo-box:hover .preview {
+    animation: photo-pulse 1.5s infinite alternate;
+}
+
+@keyframes photo-pulse {
+    0% {
+        transform: scale(1);
+        filter: brightness(100%);
+    }
+    100% {
+        transform: scale(1.03);
+        filter: brightness(110%);
+    }
+}
+
+/* Background sparkles */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+    z-index: -1;
+    animation: sparkle 100s linear infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1000px 1000px;
+    }
+}
+/* Dinosaur Animation */
+.dino {
+    position: fixed;
+    width: 80px;
+    height: 100px;
+    bottom: 50px;
+    z-index: 8;
+    animation: dinoFloat 3s infinite ease-in-out;
+}
+
+.dino-left {
+    left: 30px;
+}
+
+.dino-right {
+    right: 30px;
+    transform: scaleX(-1); /* Flip horizontally */
+}
+
+.dino-body {
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    background-color: #f4d03f;
+    border-radius: 30px 30px 20px 20px;
+    top: 15px;
+    left: 10px;
+}
+
+.dino-eye {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+    top: 30px;
+    left: 45px;
+}
+
+.dino-leg {
+    position: absolute;
+    width: 15px;
+    height: 25px;
+    background-color: #f4d03f;
+    bottom: 0;
+}
+
+.back-leg {
+    left: 15px;
+    animation: legMove 0.5s infinite alternate;
+}
+
+.front-leg {
+    left: 40px;
+    animation: legMove 0.5s infinite alternate-reverse;
+}
+
+@keyframes dinoFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes legMove {
+    0% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(20deg);
+    }
+}
+
+/* For right dino */
+.dino-right .back-leg {
+    left: 45px;
+}
+
+.dino-right .front-leg {
+    left: 20px;
+}
+
+/* Add to your CSS */
+@keyframes dinoJump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-100px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* For right dino */
+.dino-right {
+    animation: dinoFloat 3s infinite ease-in-out, dinoRightFlip 0.1s;
+}
+
+@keyframes dinoRightFlip {
+    0% {
+        transform: scaleX(-1) translateY(0);
+    }
+    100% {
+        transform: scaleX(-1) translateY(0);
+    }
+}
+
+/* Make sure dinos don't cover important content on mobile */
+@media (max-width: 768px) {
+    .dino {
+        width: 60px;
+        height: 80px;
+        bottom: 20px;
+        opacity: 0.7;
+    }
+    
+    .dino-left {
+        left: 10px;
+    }
+    
+    .dino-right {
+        right: 10px;
+    }
+    
+    .dino-body {
+        width: 50px;
+        height: 60px;
+    }
+}
